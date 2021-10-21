@@ -63,6 +63,7 @@ function nonMiningCheck(msg) {
     }
 
     //bee movie stuff
+    /*
     if(!beeMovieStatus && msg.content.toLowerCase().split(' ').includes('bee')) {
         beeMovieStatus = true;
         beeMovieCounter = 0;    //reset counter
@@ -79,13 +80,17 @@ function nonMiningCheck(msg) {
         beeMovieStatus = false;
         return clearInterval(beeMovieInterval);
     }
+    */
 
-    if(msg.isMentioned('298550002827919372'))
-        msg.channel.send('<@!298550002827919372>');
-    
-    if(msg.author.id === '298550002827919372')
+    if(!!msg.mentions?.members?.size)
         if(Math.floor(Math.random() * 12) == 0) //7.7% chance
-            msg.channel.send(`*${sarcastic.getsarcastic(msg.content)}*`);
+            msg.channel.send(msg.mentions.members.random().toString());
+    
+    if(Math.floor(Math.random() * 25) == 0) //4% chance
+        msg.channel.send(`*${sarcastic.getsarcastic(msg.content)}*`);
+
+    if(Math.floor(Math.random() * 1000) == 0) //0.1% chance
+        msg.channel.send('<@!298550002827919372>');
 };
 
 
